@@ -1,0 +1,16 @@
+.home_ul {
+  display: flex;
+  list-style: none; /* 移除默认的列表样式 */
+  padding: 0; /* 移除默认的内边距 */
+  margin: 0; /* 移除默认的外边距 */
+}
+
+.home_li {
+  width: 130px;
+  margin-right: 10px; /* 设置 li 之间的间距 */
+}
+
+.home_div {
+  width: 400px;
+  padding-left: 30px;
+}

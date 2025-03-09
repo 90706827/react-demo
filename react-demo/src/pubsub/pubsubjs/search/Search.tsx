@@ -1,0 +1,33 @@
+import React, { Component } from 'react'
+import './SearchDemo.css'
+import service from '../../../utils/Axios'
+import PubSub from 'pubsub-js'
+
+
+export default class Search extends Component {
+  keyWordElement: HTMLInputElement | undefined
+
+  search = () => {
+    PubSub.publish("search", { isFirst: false, isLoading: true })
+    if (this.keyWordElement) {
+      console.log('search', this.keyWordElement.value)
+    }
+    service.get("/api/user").then(res => {
+      PubSub.publish("search", { users: res.data, isLoading: false })
+    }).catch(err => {
+      PubSub.publish("search", { error: err.message, isLoading: false })
+    })
+
+  }
+  render() {
+    return (
+      <section className="jumbotron">
+        <h3 className="jumbotron-heading">搜索 Github 用户</h3>
+        <div>
+          <input ref={c => { if (c) this.keyWordElement = c }} type="text" placeholder="搜素输入" />
+          &nbsp;<button onClick={this.search}>搜搜</button>
+        </div>
+      </section>
+    )
+  }
+}
