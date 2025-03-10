@@ -13,8 +13,12 @@ import AxiosList from './axios/AxiosList.tsx'
 import SearchDemo from './axios/search/SearchDemo.tsx'
 import PubSubSearch from './pubsub/pubsubjs/search/PubSubSearch.tsx'
 import Router1 from './router/demo1/Router1.tsx'
-import { BrowserRouter,HashRouter } from 'react-router-dom'
-import Count from './redux/calculator/Count.tsx'
+import { BrowserRouter, HashRouter } from 'react-router-dom'
+import Count from './redux/Count.tsx'
+import { Provider } from 'react-redux'
+import store from './redux/Store.ts'
+import CountRedux from './redux/CountRedux.tsx'
+import ReduxCount from './redux/ReduxCount.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -29,7 +33,11 @@ createRoot(document.getElementById('root')!).render(
     {/* <PubSubSearch /> */}
     {/* <BrowserRouter> <Router1 /></BrowserRouter> */}
     {/* <HashRouter> <Router1 /></HashRouter> */}
-    <Count/>
+
+    <Provider store={store}>
+      {/* <Count /> */}
+      <CountRedux/>
+    </Provider>
     {/* <App /> */}
   </StrictMode>,
 )

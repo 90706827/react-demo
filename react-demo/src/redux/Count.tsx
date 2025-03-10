@@ -1,11 +1,7 @@
 import { Button, Select } from 'antd'
 import React, { Component } from 'react'
-interface CountProps {
-  number: number
-}
 
-
-export class Count extends Component<CountProps> {
+export class Count extends Component {
   state = {
     count: 0,
     num: 0
