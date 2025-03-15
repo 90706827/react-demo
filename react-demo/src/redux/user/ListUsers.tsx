@@ -1,12 +1,14 @@
 import PropTypes from 'prop-types'
 import { Component } from 'react'
 import { connect } from 'react-redux'
-import { RootState } from '../Store'
+import { RootDispatch, RootState } from '../Store'
 import "./bootstrap.min.css"
 import './SearchDemo.css'
 import { User } from './User'
 import { Avatar } from 'antd'
+import { findUsers } from './UserReducer'
 interface ListUsersProps {
+  dispatch: RootDispatch,
   users: User[];
 }
 export class ListUsers extends Component<ListUsersProps> {
@@ -14,6 +16,10 @@ export class ListUsers extends Component<ListUsersProps> {
     users: PropTypes.array.isRequired,
   }
 
+
+  componentDidMount(): void {
+    this.props.dispatch(findUsers(""))
+  }
   render() {
 
     return (
@@ -36,8 +42,9 @@ const mapStateToProps = (state: RootState) => ({
   users: state.users.users
 })
 
-const mapDispatchToProps = {
-
-}
+const mapDispatchToProps = (dispatch: RootDispatch) => ({
+  dispatch
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(ListUsers)
+

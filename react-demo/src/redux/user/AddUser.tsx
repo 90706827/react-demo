@@ -1,7 +1,7 @@
 import { Button, Input, InputRef } from 'antd';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { RootDispatch } from '../Store';
+import { RootDispatch, RootState } from '../Store';
 import { addUser } from './UserReducer';
 import { User } from './User';
 
@@ -40,8 +40,8 @@ export class AddUser extends Component<AddUserProps> {
   }
 }
 
-const mapStateToProps = (state) => ({
-
+const mapStateToProps = (state: RootState) => ({
+  state
 })
 
 const mapDispatchToProps = (dispatch: RootDispatch) => ({
