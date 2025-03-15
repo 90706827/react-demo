@@ -1,13 +1,13 @@
 import { Button, Select } from 'antd'
 import { increment, decrement } from './CountReducer'
 import { useDispatch, useSelector } from 'react-redux'
-import { RootState } from './Store'
+import { RootDispatch, RootState } from './Store'
 import { useState } from 'react'
 
 
 export const Count: React.FC = () => {
   const selector = useSelector((state: RootState) => state.count)
-  const dispath = useDispatch()
+  const dispath: RootDispatch = useDispatch()
   const [selectedValue, setSelectedValue] = useState<number>(1)
 
   return (

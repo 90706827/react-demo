@@ -19,6 +19,7 @@ import { Provider } from 'react-redux'
 import store from './redux/Store.ts'
 import CountRedux from './redux/CountRedux.tsx'
 import ReduxCount from './redux/ReduxCount.tsx'
+import UserRedux from './redux/user/UserRedux.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -36,7 +37,8 @@ createRoot(document.getElementById('root')!).render(
 
     <Provider store={store}>
       {/* <Count /> */}
-      <CountRedux/>
+      {/* <CountRedux/> */}
+      <UserRedux />
     </Provider>
     {/* <App /> */}
   </StrictMode>,
